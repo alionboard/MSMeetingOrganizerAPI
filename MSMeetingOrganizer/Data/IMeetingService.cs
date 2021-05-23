@@ -12,7 +12,7 @@ namespace MSMeetingOrganizer.Data
         void Add(Meeting meeting);
         void Delete(Meeting meeting);
         Task<bool> SaveChangesAsync();
-        Meeting Update(Meeting meeting);
+        Meeting Update(Meeting meeting,Meeting oldMeeting);
         Task<Meeting[]> GetAllAsync(bool includeParticipants = true);
         Task<Meeting> GetAsync(int id);
 

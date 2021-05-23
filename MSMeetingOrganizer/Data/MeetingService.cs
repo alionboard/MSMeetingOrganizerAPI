@@ -47,9 +47,21 @@ namespace MSMeetingOrganizer.Data
             return (await meetingContext.SaveChangesAsync()) > 0;
         }
 
-        public Meeting Update(Meeting meeting)
+        public Meeting Update(Meeting meeting, Meeting oldMeeting)
         {
-            meetingContext.Update(meeting);
+
+            oldMeeting.Topic = meeting.Topic;
+            oldMeeting.Date = meeting.Date;
+            oldMeeting.EndTime = meeting.EndTime;
+
+            foreach (var item in meeting.Participants)
+            {
+                if (oldMeeting.Participants.Where(x => x.Fullname == item.Fullname).FirstOrDefault() == null)
+                {
+                    oldMeeting.Participants.Add(item);
+                }
+            }
+            meetingContext.Update(oldMeeting);
             return meeting;
         }
     }

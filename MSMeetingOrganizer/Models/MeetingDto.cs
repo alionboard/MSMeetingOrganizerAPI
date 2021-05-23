@@ -12,6 +12,7 @@ namespace MSMeetingOrganizer.Models
         public int Id { get; set; }
         public string Topic { get; set; }
         public string Date { get; set; }
+        public DateTime? DateTime { get; set; }
         public string StartTime { get; set; }
         public string EndTime { get; set; }
         public ICollection<ParticipantDto> Participants { get; set; }

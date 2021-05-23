@@ -53,16 +53,19 @@ namespace MSMeetingOrganizer.Controllers
             {
                 var result = await meetingService.GetAsync(id);
                 if (result == null) return NotFound();
-                
-                return new MeetingDto
+
+                MeetingDto meeting = new MeetingDto
                 {
                     Id = result.Id,
                     Topic = result.Topic,
                     Date = result.Date.Value.ToString("d"),
+                    DateTime = result.Date,
                     StartTime = result.Date.Value.ToString("HH:mm"),
                     EndTime = result.EndTime,
                     Participants = result.Participants.Select(y => new ParticipantDto { Id = y.Id, Fullname = y.Fullname }).ToArray()
-                }; ;
+                };
+
+                return meeting;
             }
             catch (Exception)
             {
@@ -81,7 +84,8 @@ namespace MSMeetingOrganizer.Controllers
                     return NotFound();
                 }
 
-                oldMeeting = meeting;
+                meetingService.Update(meeting, oldMeeting);
+                
                 if (await meetingService.SaveChangesAsync())
                 {
                     return meeting;
