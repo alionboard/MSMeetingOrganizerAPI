@@ -1,4 +1,4 @@
-# Meeting Organizer
+# MeetingOrganizerAPI
 Müşteriler ile yapılacak toplantıların kaydedilebileceği, güncellenebileceği ve silinebileceği bir tek 
 sayfa uygulaması.
 
