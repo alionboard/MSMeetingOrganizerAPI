@@ -3,5 +3,5 @@ Müşteriler ile yapılacak toplantıların kaydedilebileceği, güncellenebilec
 sayfa uygulaması.
 
 
-## Swagger Ozet  
+## Swagger Özet  
 <img src='images/swagger.png' width='100%'>   
